@@ -16,7 +16,7 @@ export default function navbar() {
 
     useEffect(() => {
         const showScrollTop = () => {
-            window.pageYOffset > 300 ? setShowbtn(true) : setShowbtn(false);
+            window.scrollY > 300 ? setShowbtn(true) : setShowbtn(false);
         };
         window.addEventListener('scroll', showScrollTop);
         return () => {

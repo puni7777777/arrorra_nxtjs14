@@ -79,18 +79,6 @@ export default function navbar() {
                             </Link>
                             <Link href="/login">
                                 <button className={btnStyle}>
-                                    {/* <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            className="h-5 w-5"
-                                            viewBox="0 0 20 20"
-                                            fill="currentColor"
-                                        >
-                                            <path
-                                                fillRule="evenodd"
-                                                d="M18 10a8 8 0 11-16 0 8 8 00116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a2 2 0 11-4 0 2 2 0 014 0z"
-                                                clipRule="evenodd"
-                                            />
-                                        </svg> */}
                                     LOGIN/SIGN UP
                                 </button>
                             </Link>

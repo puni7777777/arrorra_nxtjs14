@@ -2,7 +2,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import logo from '../allphotos/logo.png'
+import logo from '../(pages)/allphotos/logo.png'
 import { useState, useEffect } from 'react';
 import { FaArrowUp } from 'react-icons/fa';
 import { RiShoppingCartLine } from "react-icons/ri";

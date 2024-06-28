@@ -8,21 +8,12 @@ export async function CreateUser({ name, email, password }) {
                 name,
                 email,
                 password,
-                accounts: {
-                    create: {
-                        type: "credentials",
-                        provider: "email",
-                        providerAccountId: uuidv4(),
-                    },
-                },
             },
-            include: {
-                accounts: true,
-            }
         })
-        return newUser;
+        return newUser
     } catch (error) {
-        return ('Something went wrong', error)
+        console.error('Something went wrong', error)
+        throw error
     }
 }
 
@@ -35,6 +26,7 @@ export async function getUserbyEmail({ email }) {
         })
         return user
     } catch (error) {
-        return ('error getting user email', error)
+        console.error('error getting user email', error)
+        throw error
     }
 }

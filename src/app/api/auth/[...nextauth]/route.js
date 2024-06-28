@@ -4,6 +4,7 @@ import GithubProvider from 'next-auth/providers/github'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { PrismaAdapter } from "@auth/prisma-adapter"
 import prisma from '@/app/(authorization)/lib/prisma'
+import bcrypt from 'bcrypt'
 
 const handler = NextAuth({
   adapter: PrismaAdapter(prisma),
@@ -20,30 +21,34 @@ const handler = NextAuth({
       type: 'credentials',
 
       credentials: {
-        email: { label: "Username", type: "text", placeholder: 'howareyou@example.com' },
+        email: { label: "email", type: "text", placeholder: 'howareyou@example.com' },
         password: { label: "Password", type: "password" }
       },
 
       async authorize(credentials, req) {
-        // const user = await prisma.user.findFirst({
-        //   where: {
-        //     username: credentials.username,
-        //     password: credentials.password
-        //   }
-        // })
-        const user = {
-          id: '4',
-          name: 'penny',
-          email: 'penny@example.com',
-          password: '123456'
+        const user = await prisma.user.findFirst({
+          where: {
+            email: credentials.email,
+          }
+        })
+        if (!user) {
+          return null
         }
-        if (user) {
+        // const devuser = {
+        //   id: '4',
+        //   name: 'penny',
+        //   email: 'penny@example.com',
+        //   password: '123456'
+        // }
+        const isValid = await bcrypt.compare(credentials.password, user.password)
+        if (isValid) {
           return user
+        } else {
+          return null
         }
-        return null
       }
     })
-  ]
+  ],
 })
 
 export { handler as GET, handler as POST };

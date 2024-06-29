@@ -2,6 +2,7 @@ import { React, useState, useEffect } from 'react'
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 import file_name from './File_imports'
 import PropTypes from 'prop-types';
+import Image from 'next/image';
 
 export default function Corollaeffect(props) {
 
@@ -57,7 +58,7 @@ export default function Corollaeffect(props) {
         <div className={`overflow-hidden relative rounded-2xl ${props.width}`}>
             <div className={`flex transition-all duration-1000 ease-in-out h-96`} style={{ transform: `translatex(-${slide * 100}%)` }}>
                 {file_name.map(s => {
-                    return <img src={s} alt="nopic" className='w-full object-cover' style={{ flexShrink: 0 }} />
+                    return <Image src={s} alt="nopic" className='w-full object-cover' style={{ flexShrink: 0 }} />
                 })}
             </div>
             <div className={`absolute top-0 h-full w-full justify-between items-center flex z-10 text-3xl`}>
